@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Encriptador de texto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    #contenedor {
+      width: 500px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #555;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenedor">
+    <h1>Encriptador de texto</h1>
+    <form>
+      <label for="texto">Texto:</label>
+      <input type="text" id="texto" name="texto">
+      <label for="clave">Clave:</label>
+      <input type="text" id="clave" name="clave">
+      <input type="submit" value="Encriptar">
+    </form>
+    <div id="resultado"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const form = document.querySelector('form');
+    const resultado = document.querySelector('#resultado');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const texto = document.querySelector('#texto').value;
+      const clave = parseInt(document.querySelector('#clave').value);
+      const textoCifrado = encriptarTexto(texto, clave);
+      resultado.textContent = textoCifrado;
+      resultado.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
